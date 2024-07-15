@@ -52,7 +52,7 @@ def test_card_form_validation(setup, card_details):
         Select(driver.find_element(By.ID, "cardMonth")).select_by_visible_text(exp_month)
     except NoSuchElementException:
         driver.execute_script(f'alert("Invalid expiration month: {exp_month}");')
-        # time.sleep(2)
+        time.sleep(1)
         driver.switch_to.alert.accept()
         return  # Skip further validation for this test case
 
@@ -61,7 +61,7 @@ def test_card_form_validation(setup, card_details):
         Select(driver.find_element(By.ID, "cardYear")).select_by_visible_text(exp_year)
     except NoSuchElementException:
         driver.execute_script(f'alert("Invalid expiration year: {exp_year}");')
-        # time.sleep(2)
+        time.sleep(1)
         driver.switch_to.alert.accept()
         return  # Skip further validation for this test case
 
@@ -77,7 +77,7 @@ def test_card_form_validation(setup, card_details):
     try:
         alert = driver.switch_to.alert
         alert_text = alert.text
-        # time.sleep(2)
+        time.sleep(1)
         alert.accept()
     except:
         pass
